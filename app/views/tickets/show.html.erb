@@ -1,32 +1,19 @@
-<div class="page-header">
-  <%= link_to tickets_path, class: 'btn btn-default' do %>
-    <span class="glyphicon glyphicon-list-alt"></span>
-    Back
-  <% end %>
-  <%= link_to edit_ticket_path(@ticket), class: 'btn btn-primary' do %>
-    <span class="glyphicon glyphicon-pencil"></span>
-    Edit
-  <% end %>
-  <h1>Show ticket</h1>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-6">
+    <%= image_tag "tic.jpg", class: "img-responsive" %>
+    </div>
+
+    <div class="col-md-6">
+      <h3><%= @ticket.ticket %> by <%= @ticket.ticket %></h3>
+      <p class="justify"><%= @ticket.description %></p>
+      <h4 class="text-right">$<%= @ticket.price.to_f / 100 %></h4>
+    </div>
+
+  </div>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>Ticket:</dt>
-  <dd><%= @ticket.ticket %></dd>
 
-  <dt>Description:</dt>
-  <dd><%= @ticket.description %></dd>
-
-  <dt>Address:</dt>
-  <dd><%= @ticket.address %></dd>
-
-  <dt>Price:</dt>
-  <dd><%= @ticket.price %></dd>
-
-  <dt>Longitude:</dt>
-  <dd><%= @ticket.longitude %></dd>
-
-  <dt>Latitude:</dt>
-  <dd><%= @ticket.latitude %></dd>
-
-</dl>
+<%= link_to 'Edit', edit_ticket_path(@ticket) %> |
+<%= link_to 'Back', tickets_path %>
