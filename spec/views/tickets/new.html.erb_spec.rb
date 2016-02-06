@@ -1,0 +1,33 @@
+require 'rails_helper'
+
+RSpec.describe "tickets/new", type: :view do
+  before(:each) do
+    assign(:ticket, Ticket.new(
+      :ticket => "MyString",
+      :description => "MyString",
+      :address => "MyString",
+      :price => 1,
+      :longitude => 1.5,
+      :latitude => 1.5
+    ))
+  end
+
+  it "renders new ticket form" do
+    render
+
+    assert_select "form[action=?][method=?]", tickets_path, "post" do
+
+      assert_select "input#ticket_ticket[name=?]", "ticket[ticket]"
+
+      assert_select "input#ticket_description[name=?]", "ticket[description]"
+
+      assert_select "input#ticket_address[name=?]", "ticket[address]"
+
+      assert_select "input#ticket_price[name=?]", "ticket[price]"
+
+      assert_select "input#ticket_longitude[name=?]", "ticket[longitude]"
+
+      assert_select "input#ticket_latitude[name=?]", "ticket[latitude]"
+    end
+  end
+end
