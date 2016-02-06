@@ -5,6 +5,11 @@ class TicketsController < ApplicationController
   # GET /tickets.json
   def index
     @tickets = Ticket.all
+    @hash = Gmaps4rails.build_markers(@tickets) do |ticket, marker|
+  marker.lat ticket.latitude
+  marker.lng ticket.longitude
+  marker.infowindow ticket.ticket
+end
   end
 
   # GET /tickets/1
